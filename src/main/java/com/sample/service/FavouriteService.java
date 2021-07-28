@@ -20,9 +20,9 @@ public interface FavouriteService {
 	 * @param customerId
 	 * @return
 	 */
-	public List<FavouriteAccount> getFavouriteAccounts(final String customerId);
+	public List<FavouriteAccount> getFavouriteAccounts(String customerId, int page);
 	
-	
+
 	/**
 	 * Adds a new favorite account in the db.
 	 * @param favouriteAccount
