@@ -1,21 +1,30 @@
 package com.sample.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="customer")
-public class Customer {
+public class Customer implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	/**
@@ -41,6 +50,16 @@ public class Customer {
 	 */
 	@OneToMany(mappedBy = "customer")
 	private List<FavouriteAccount> favouriteAccounts;
+	
+
+	public Customer() {
+		super();
+	}
+
+	public Customer(String customerId) {
+		super();
+		this.customerId = customerId;
+	}
 
 	public Integer getId() {
 		return id;

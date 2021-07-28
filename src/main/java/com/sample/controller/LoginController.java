@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+
 /**
  * Login controller class is responsible for authentication and authorization of the user.
  * @author HCL
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/v1/login")
+@Api(value = "Login APIs", tags = {"Customer login APIs"})
 public class LoginController {
 
 	/**
