@@ -44,6 +44,8 @@ public class FavouriteAccount implements Serializable{
 	@Column(name="account_number")
 	private String accountNumber;
 	
+	@Column(name = "bank_name")
+	private String bankName;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
@@ -91,6 +93,14 @@ public class FavouriteAccount implements Serializable{
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 	
 }
