@@ -1,0 +1,25 @@
+Table Name : customer
+CREATE TABLE `test`.`customer` (
+  `id` INT NOT NULL,
+  `customer_id` VARCHAR(20) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
+  `name` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `custo_UNIQUE` (`customer_id` ASC) VISIBLE););
+ 
+Table Name : favourite_accountCREATE TABLE `test`.`favorite_account` (
+  `id` INT NOT NULL,
+  `account_number` VARCHAR(50) NOT NULL,
+  `account_name` VARCHAR(50) NOT NULL,
+  `customer_id` VARCHAR(50) NOT NULL,
+  `bank_name` VARCHAR(50) NOT NULL,
+  `created_on` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `account_number_UNIQUE` (`account_number` ASC) VISIBLE,
+  INDEX `FK_CustomerId_idx` (`customer_id` ASC) VISIBLE,
+  CONSTRAINT `FK_CustomerId`
+    FOREIGN KEY (`customer_id`)
+    REFERENCES `test`.`customer` (`customer_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
