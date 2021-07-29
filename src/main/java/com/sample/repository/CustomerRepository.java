@@ -15,5 +15,10 @@ import com.sample.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-	
+	/**
+	 * 
+	 * @param customerId
+	 * @return
+	 */
+	public Customer findByCustomerId(final String customerId);
 }

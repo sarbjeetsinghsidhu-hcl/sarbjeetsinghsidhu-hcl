@@ -8,8 +8,8 @@ import java.util.List;
 import com.sample.entity.FavouriteAccount;
 
 /**
- * Favourtie Service represents the operations 
- * @author HCL
+ * Favorite Service represents the operations 
+ * @author Team.
  *
  */
 
@@ -24,11 +24,12 @@ public interface FavouriteService {
 	
 
 	/**
-	 * Adds a new favorite account in the db.
+	 * 
+	 * @param customerId
 	 * @param favouriteAccount
 	 * @return
 	 */
-	public boolean addFavouriteAccount(FavouriteAccount favouriteAccount);
+	public boolean addFavouriteAccount(String customerId, FavouriteAccount favouriteAccount);
 	
 	/**
 	 * Returns favorite account corresponding to a particular fav account id.

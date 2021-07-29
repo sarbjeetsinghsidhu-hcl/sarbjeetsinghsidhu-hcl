@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -64,8 +65,15 @@ public class CustomerController {
 	/**
 	 * To add a new favorite.
 	 */
-	@PostMapping("/favorites")
-	public void addFavourite() {
+	@ApiOperation(value = "Add new favorite for the customer.", response = FavouriteAccount.class)
+	@ApiResponses({
+		@ApiResponse(code = 201, message = "Successfully added the account", response = FavouriteAccount.class),
+		@ApiResponse(code = 409, message = "Account already exists", response = ErrorResponse.class),
+		@ApiResponse(code = 406, message = "Invalid account number", response = ErrorResponse.class)
+	})
+	@PostMapping("/{coustomerId}/favorites")
+	public void addFavourite(@PathVariable("customerId") String customerId,@RequestBody FavouriteAccount favouriteAccount) {
+		favouriteService.addFavouriteAccount(customerId, favouriteAccount);
 	}
 
 	/**
