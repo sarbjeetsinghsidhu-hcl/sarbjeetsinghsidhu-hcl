@@ -28,7 +28,7 @@ import com.sample.repository.FavouriteAccountRepository;
 import com.sample.service.impl.FavoriteServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class FavouriteServiceTest {
+class FavouriteServiceTest {
 	
 	@InjectMocks
 	private FavoriteServiceImpl favService;
