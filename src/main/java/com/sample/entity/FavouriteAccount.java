@@ -1,6 +1,7 @@
 package com.sample.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +16,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="favourite_account")
-public class FavouriteAccount implements Serializable{
+@Table(name = "favourite_account")
+public class FavouriteAccount implements Serializable {
 
 	/**
 	 * 
@@ -27,31 +28,32 @@ public class FavouriteAccount implements Serializable{
 	 * 
 	 */
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	/**
 	 * 
 	 */
-	@Column(name="account_name")
+	@Column(name = "account_name")
 	private String accountName;
-	
-	
+
 	/**
 	 * 
 	 */
-	@Column(name="account_number")
+	@Column(name = "account_number")
 	private String accountNumber;
-	
+
 	@Column(name = "bank_name")
 	private String bankName;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
+
+	@Column(name = "created_on")
+	private Date createdOn;
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	@JsonIgnore
 	private Customer customer;
-	
 
 	public FavouriteAccount() {
 		super();
@@ -102,5 +104,19 @@ public class FavouriteAccount implements Serializable{
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
-	
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	@Override
+	public String toString() {
+		return "FavouriteAccount [id=" + id + ", accountName=" + accountName + ", accountNumber=" + accountNumber
+				+ ", bankName=" + bankName + ", customer=" + customer + "]";
+	}
+
 }

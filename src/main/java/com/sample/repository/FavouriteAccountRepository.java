@@ -23,4 +23,11 @@ public interface FavouriteAccountRepository extends JpaRepository<FavouriteAccou
 			countQuery = "SELECT count(*) FROM favourite_account fav WHERE fav.customer_id=?1",
 			nativeQuery = true)
 	public Page<FavouriteAccount> findByCustomerId(String customerId, Pageable pageable);
+	
+	/**
+	 * 
+	 * @param customerId
+	 * @return
+	 */
+	public FavouriteAccount findByAccountNumber(final String accountNumber);
 }
