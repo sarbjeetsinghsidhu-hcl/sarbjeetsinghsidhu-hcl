@@ -53,7 +53,7 @@ public class CustomerController {
 		@ApiResponse(code = 200, message = "Successfull operation", response = FavouriteAccount.class),
 		@ApiResponse(code = 404, message = "Favourites not found", response = ErrorResponse.class)
 	})
-	@GetMapping("/{customerId}/favorite")
+	@GetMapping("/{customerId}/favorites")
 	public List<FavouriteAccount> getFavorites(
 			@PathVariable("customerId") String customerId,
 			@RequestParam("page") Optional<Integer> page) {
