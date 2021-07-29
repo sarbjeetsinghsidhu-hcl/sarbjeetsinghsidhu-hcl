@@ -1,5 +1,5 @@
 /**
- * 
+ * Customer controller
  */
 package com.sample.controller;
 
