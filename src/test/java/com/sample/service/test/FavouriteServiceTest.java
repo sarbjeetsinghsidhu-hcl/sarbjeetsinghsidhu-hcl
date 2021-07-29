@@ -28,7 +28,7 @@ import com.sample.repository.FavouriteAccountRepository;
 import com.sample.service.impl.FavoriteServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class FavouriteServiceTest {
+class FavouriteServiceTest {
 	
 	@InjectMocks
 	private FavoriteServiceImpl favService;
@@ -61,7 +61,7 @@ public class FavouriteServiceTest {
 	
 	@Test
 	void testGetFavouriteAccountByCustomerId_Exception() {
-		FavouritesNotFound expectedEx = new FavouritesNotFound("Favourite accounts not found");
+		FavouritesNotFound expectedEx = new FavouritesNotFound(String.format("Favourite accounts are not found against customer Id %s", mockCustomerId));
 		List<FavouriteAccount> accountList = new ArrayList<>();
 		Page<FavouriteAccount> page = new PageImpl<>(accountList);
 		when(dao.findByCustomerId(mockCustomerId, PageRequest.of(0, 5, Sort.Direction.ASC, "account_name"))).thenReturn(page);

@@ -44,7 +44,7 @@ class CustomerControllerTest {
 		List<FavouriteAccount> mockReturnList = Arrays.asList(favAccount);
 
 		when(favService.getFavouriteAccounts(mockCustomerId, 0)).thenReturn(mockReturnList);
-		mockMvc.perform(get("/api/v1/customers/" + mockCustomerId + "/favorite")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/v1/customers/" + mockCustomerId + "/favorites")).andExpect(status().isOk())
 				.andExpect(jsonPath("$", Matchers.hasSize(1)))
 				.andExpect(jsonPath("$[0].accountName", Matchers.is("Test-Account-Name")));
 	}

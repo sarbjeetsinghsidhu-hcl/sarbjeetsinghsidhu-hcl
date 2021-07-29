@@ -69,7 +69,7 @@ public class FavoriteServiceImpl implements FavouriteService {
 		Page<FavouriteAccount> pageList = favouriteAccountRepository.findByCustomerId(customerId,
 				PageRequest.of(page, 5, Sort.Direction.ASC, "account_name"));
 		if (pageList.isEmpty())
-			throw new FavouritesNotFound("Favourite accounts not found");
+			throw new FavouritesNotFound(String.format("Favourite accounts are not found against customer Id %s", customerId));
 		return pageList.getContent();
 	}
 

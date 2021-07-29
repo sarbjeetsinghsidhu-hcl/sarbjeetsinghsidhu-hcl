@@ -44,10 +44,11 @@ public class CustomerController {
 	private FavouriteService favouriteService;
 
 	/**
-	 * Accept the customer id and returns list of favorites.
+	 * Accept the customer id and returns list of favorite accounts from database.
 	 * 
-	 * @param customerId
-	 * @return
+	 * @param customerId.
+	 * @param page - Current page number for pagination
+	 * @return {List<FavouriteAccount>} - List of Favorite accounts.
 	 */
 	@ApiOperation(value = "Get list of favourite accounts", response = FavouriteAccount.class)
 	@ApiResponses({
