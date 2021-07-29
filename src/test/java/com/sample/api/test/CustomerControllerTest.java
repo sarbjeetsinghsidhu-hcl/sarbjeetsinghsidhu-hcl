@@ -1,5 +1,6 @@
 package com.sample.api.test;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -10,7 +11,6 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -43,7 +43,7 @@ class CustomerControllerTest {
 		favAccount.setAccountNumber("ABCD 1234 456 789");
 		List<FavouriteAccount> mockReturnList = Arrays.asList(favAccount);
 
-		Mockito.when(favService.getFavouriteAccounts(mockCustomerId, 0)).thenReturn(mockReturnList);
+		when(favService.getFavouriteAccounts(mockCustomerId, 0)).thenReturn(mockReturnList);
 		mockMvc.perform(get("/api/v1/customers/" + mockCustomerId + "/favorite")).andExpect(status().isOk())
 				.andExpect(jsonPath("$", Matchers.hasSize(1)))
 				.andExpect(jsonPath("$[0].accountName", Matchers.is("Test-Account-Name")));
